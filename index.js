@@ -12,11 +12,13 @@ document.querySelector('#comenzar').addEventListener('click', function(){
 //funcion para resaltar cuadro
 function resaltarCuadro(color){
   const DELEY_IN_MS = 500;
-  document.querySelector('.' + color).style.opacity= 1;
-  setTimeout(function(){
-  document.querySelector('.' + color).style.opacity= 0.5;
-  },DELEY_IN_MS)
+  const $cuadro = document.querySelector('.' + color);
+  $cuadro.classList.add('activo');
+  setTimeout(() => {
+    $cuadro.classList.remove('activo');
+  }, DELEY_IN_MS);
 }
+
 //funcion manejar funcion maquina
 function manejarSeleccionMaquina(){
   actualizarEstado('Turno de la maquina')
@@ -96,3 +98,6 @@ function reiniciarJuego(usuarioPerdio = false){
 function actualizarEstado(estado){
   $estado.textContent = estado;
 }
+document.querySelector('#toggle-tema').addEventListener('click', function() {
+  document.body.classList.toggle('tema-oscuro');
+});
