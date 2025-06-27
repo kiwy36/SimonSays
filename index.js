@@ -3,10 +3,13 @@ let secuenciaUsuario = [];
 const $ronda = document.querySelector('#ronda');
 let ronda = 0;
 const $estado = document.querySelector('#estado');
+
+const $botonComenzar = document.querySelector('#comenzar');
 const COLORES = ['rojo','naranja','azul','verde'];
 reiniciarJuego()
 //funcion que imprime el color elegido por la maquina
 document.querySelector('#comenzar').addEventListener('click', function(){
+  $botonComenzar.style.display = 'none';
   manejarSeleccionMaquina()
 });
 //funcion para resaltar cuadro
@@ -94,6 +97,7 @@ function reiniciarJuego(usuarioPerdio = false){
   secuenciaCompu = [];
   secuenciaUsuario = [];
   reIniciarRonda()
+  $botonComenzar.style.display = 'inline-block';
 }
 function actualizarEstado(estado){
   $estado.textContent = estado;
