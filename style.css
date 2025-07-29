@@ -1,124 +1,164 @@
-/* Estilos generales */
+/* ---------- ESTÉTICA GENERAL ---------- */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Courier New', monospace;
+  background-color: #2a2a2a;
+  color: #f8f8f2;
   text-align: center;
-  background-color: #bebebe;
-}
-
-/* Contenedor principal */
-.container {
-  max-width: 500px;
-  margin: auto;
   padding: 20px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Título */
+/* CONTENEDOR PRINCIPAL */
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 30px;
+  background: radial-gradient(#2e2e2e, #1c1c1c);
+  border: 5px solid #8b5e3c;
+  border-radius: 20px;
+  box-shadow: 0 0 20px #000 inset, 0 0 10px #000;
+  position: relative;
+  min-height: 580px;
+  box-sizing: border-box;
+}
+
+/* TÍTULOS */
 h1 {
-  color: #333;
+  color: #f0d9b5;
+  text-shadow: 1px 1px 2px #000;
+  margin-bottom: 10px;
 }
 
-/* Botón de comenzar */
-#comenzar {
+#turno {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 10px 0;
+  transition: all 0.3s ease;
+}
+
+/* Turnos visuales */
+.turno-maquina {
+  background-color: #5c5c5c;
+  color: #ff9f43;
+  border: 2px dashed #ff922b;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.turno-usuario {
+  background-color: #2d402d;
+  color: #51cf66;
+  border: 2px solid #51cf66;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* FEEDBACK */
+#estado {
+  font-weight: bold;
+  margin: 10px 0;
+  font-size: 16px;
+  transition: color 0.3s ease;
+  color: #d3d3d3;
+}
+
+/* RONDA */
+#ronda {
+  font-size: 24px;
+  color: #ffcd58;
+}
+
+/* ---------- BOTÓN COMENZAR Y TEMA ---------- */
+#comenzar, #toggle-tema {
   padding: 10px 20px;
   font-size: 16px;
-  background: #007bff;
+  background: linear-gradient(to bottom, #a67c52, #8b5e3c);
   color: white;
-  border: none;
-  border-radius: 5px;
+  border: 2px solid #d6a87c;
+  border-radius: 8px;
   cursor: pointer;
+  box-shadow: 2px 2px 5px #000;
+  margin: 10px;
 }
 
-#comenzar:hover {
-  background: #0056b3;
+#comenzar:hover, #toggle-tema:hover {
+  background: linear-gradient(to bottom, #b88759, #7f5539);
 }
 
-/* Contenedor de botones de colores */
+/* ---------- BOTONES DE COLORES EN CÍRCULO ---------- */
 #contenedor-botones {
-  margin-top: 20px;
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-}
-
-/* Botones de colores */
-.color {
-  width: 80px;
-  height: 80px;
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
+  width: 300px;
+  height: 300px;
+  margin: 40px auto;
+  position: relative;
+  border: 6px solid #444;
   border-radius: 50%;
-  cursor: pointer;
-  opacity: 0.5;
-  transition: opacity 1s;
+  background: #1c1c1c;
+  box-shadow: inset 0 0 20px #000;
+}
+
+.color {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  opacity: 0.6;
+  position: absolute;
   transition: transform 0.2s ease, opacity 0.4s ease;
-}
-.color.activo {
-  transform: scale(1.2);
-  box-shadow: 0 0 20px white;
+  box-shadow: inset 0 0 10px #000;
+  border: 3px solid #222;
 }
 
-.color[data-color="rojo"] {
+.color.rojo {
   background: #ff4b5c;
+  top: 0;
+  left: 90px;
 }
-.color[data-color="naranja"] {
+.color.naranja {
   background: #ff922b;
+  top: 90px;
+  right: 0;
 }
-.color[data-color="verde"] {
+.color.verde {
   background: #51cf66;
+  bottom: 0;
+  left: 90px;
 }
-.color[data-color="azul"] {
+.color.azul {
   background: #339af0;
+  top: 90px;
+  left: 0;
 }
-
 
 .color:hover {
   opacity: 1;
 }
-/* Tema oscuro */
+
+/* ---------- EFECTO DE ACTIVACIÓN ---------- */
+.color.activo {
+  transform: scale(1.2);
+  opacity: 1;
+  box-shadow: 0 0 20px 5px white;
+  animation: resaltar 0.5s ease;
+}
+
+@keyframes resaltar {
+  0% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.6; }
+}
+
+/* ---------- TEMA OSCURO APLICADO ---------- */
 body.tema-oscuro {
-  background-color: #222;
-  color: #f5f5f5;
+  background-color: #121212;
+  color: #f0f0f0;
 }
 
-/* Botón de tema */
-#toggle-tema {
-  margin: 10px;
-  padding: 8px 15px;
-  background-color: #444;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-#toggle-tema:hover {
-  background-color: #222;
-}
-
-/* Indicador de turno */
-#turno {
-  font-size: 20px;
-  font-weight: bold;
-  margin: 10px 0;
-
-}
-
-/* Feedback adicional */
-#estado {
-  font-weight: bold;
-  margin: 10px 0;
-  transition: color 0.3s ease;
-}
 body.tema-oscuro .container {
-  background-color: #111;
-  color: white;
+  background: radial-gradient(#1c1c1c, #0a0a0a);
+  border-color: #444;
 }
 
-body.tema-oscuro .container h1,
-body.tema-oscuro .container p,
-body.tema-oscuro .container span {
-  color: white;
+body.tema-oscuro #comenzar,
+body.tema-oscuro #toggle-tema {
+  background: linear-gradient(to bottom, #555, #333);
+  border-color: #888;
 }
